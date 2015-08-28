@@ -13,11 +13,9 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tomtom/tcomment_vim'
-
-" NeoBundle 'nathanaelkane/vim-indent-guides'
-" let g:indent_guides_enable_on_vim_startup = 1
-
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 call neobundle#end()
     
@@ -28,4 +26,16 @@ NeoBundleCheck
 syntax on
 colorscheme jellybeans
 set number
+" autocmd VimEnter * execute 'NERDTree'
+let g:NERDTreeDirArrows=0
+let g:indent_guides_enable_on_vim_startup = 1
+
+set bs=start
+
+set tabstop=2
+set autoindent
+set expandtab
+set shiftwidth=2
+
+
 
