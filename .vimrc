@@ -16,6 +16,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'tpope/vim-fugitive'
 
 call neobundle#end()
     
@@ -42,9 +43,9 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
-map <silent> sy :call YanktmpYank()<CR> 
-map <silent> sp :call YanktmpPaste_p()<CR> 
-map <silent> sP :call YanktmpPaste_P()<CR>
+map <silent> yyy :call YanktmpYank()<CR> 
+map <silent> ppp :call YanktmpPaste_p()<CR> 
+map <silent> PPP :call YanktmpPaste_P()<CR>
 
 set mouse=a
 
