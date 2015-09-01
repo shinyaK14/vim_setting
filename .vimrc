@@ -26,7 +26,7 @@ NeoBundleCheck
 
 syntax on
 colorscheme jellybeans
-set number
+set relativenumber
 " autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeDirArrows=0
 let g:indent_guides_enable_on_vim_startup = 1
@@ -51,4 +51,5 @@ set mouse=a
 
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
+inoremap <silent> jj <ESC>
 
