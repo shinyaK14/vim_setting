@@ -9,7 +9,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'scrooloose/nerdtree'
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><Space>e :NERDTreeToggle<CR>
+noremap <Space>h :Unite file_mru<CR>
 
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tomtom/tcomment_vim'
@@ -17,6 +18,8 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'rhysd/committia.vim'
 
 call neobundle#end()
     
@@ -43,13 +46,18 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
-map <silent> yyy :call YanktmpYank()<CR> 
-map <silent> ppp :call YanktmpPaste_p()<CR> 
-map <silent> PPP :call YanktmpPaste_P()<CR>
+map <silent> <Space>y :call YanktmpYank()<CR> 
+map <silent> <Space>p :call YanktmpPaste_p()<CR> 
+map <silent> <Space>P :call YanktmpPaste_P()<CR>
+
+map <Space>s <Esc>:w<CR>
 
 set mouse=a
 
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
 inoremap <silent> jj <ESC>
+inoremap <silent> <C-j> j
+
+set spell
 
