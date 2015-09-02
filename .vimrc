@@ -19,7 +19,6 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'rhysd/committia.vim'
 
 call neobundle#end()
     
@@ -60,5 +59,4 @@ inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 
 set spell
-
 
