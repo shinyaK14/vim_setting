@@ -19,11 +19,13 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 call neobundle#end()
-    
+
 filetype plugin indent on
-    
+
 NeoBundleCheck
 
 syntax on
@@ -59,4 +61,10 @@ inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 
 set spell
+
+map <Space>w <C-w>
+map <Leader>sc <Esc>:e db/schema.rb<CR>
+
+hi clear SpellBad
+hi SpellBad cterm=underline
 
