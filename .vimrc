@@ -16,12 +16,12 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'slim-template/vim-slim'
 
 call neobundle#end()
 
