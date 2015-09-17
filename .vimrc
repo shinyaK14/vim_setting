@@ -63,6 +63,7 @@ map <Leader>gf <Esc>:vs Gemfile<CR>
 map <Leader>bi <Esc>:!bundle install<CR>
 map <Leader>vr <Esc>:vs ~/dotfiles/.vimrc<CR>
 map <Space>qa <Esc>:qall<CR>
+map <Space>qq <Esc>:q!<CR>
 map <Leader>ra <Esc>:!rubocop -a<CR>
 map :Gs :Gstatus
 map :Gv :Gitv
