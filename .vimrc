@@ -75,6 +75,7 @@ map <Space>3 <Esc>:vertical resize 30<CR>
 map <Space>0 $
 map <Space>1 ^
 nnoremap gv :vertical wincmd f<CR>
+map <Leader>rt <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
 hi clear SpellBad
