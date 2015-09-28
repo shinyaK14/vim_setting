@@ -19,6 +19,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'rking/ag.vim'
 NeoBundleCheck
 call neobundle#end()
 
@@ -41,6 +42,7 @@ set scrolloff=10
 set ignorecase
 set hlsearch
 set wrap
+set clipboard=unnamed,autoselect
 
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
@@ -65,8 +67,8 @@ map <Leader>vr <Esc>:vs ~/dotfiles/.vimrc<CR>
 map <Space>qa <Esc>:qall<CR>
 map <Space>qq <Esc>:q!<CR>
 map <Leader>ra <Esc>:!rubocop -a<CR>
-map :Gs :Gstatus
-map :Gv :Gitv
+map <Space>gs <Esc>:Gstatus<CR>
+map <Space>gv <Esc>:Gitv<CR>
 map <Leader>rt <Esc>:vs config/routes.rb<CR>
 noremap g<CR> g;
 nnoremap q :<C-u>q<CR>
@@ -75,7 +77,9 @@ map <Space>3 <Esc>:vertical resize 30<CR>
 map <Space>0 $
 map <Space>1 ^
 nnoremap gv :vertical wincmd f<CR>
-map <Leader>rt <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
+nnoremap <Leader><Leader> <Esc>:nohlsearch<CR>
+map <Leader>routes <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
+map <Space>ag <Esc>:Ag
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
 hi clear SpellBad
