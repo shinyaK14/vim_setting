@@ -56,7 +56,10 @@ map <silent> <Space>P :call YanktmpPaste_P()<CR>
 map <Space>s <Esc>:w<CR>
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
-map <Space>w <C-w>
+map <S-j> <C-w>j
+map <S-k> <C-w>k
+map <S-h> <C-w>h
+map <S-l> <C-w>l
 map <Leader>sc <Esc>:vs db/schema.rb<CR>
 map <Space>f :CtrlP<CR>
 map <Space>o :only<CR>
