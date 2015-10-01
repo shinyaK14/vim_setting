@@ -42,6 +42,9 @@ colorscheme monokai
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=234
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+autocmd VimEnter,Colorscheme * :hi Pmenu ctermbg=17
+autocmd VimEnter,Colorscheme * :hi PmenuSel ctermbg=88
+autocmd VimEnter,Colorscheme * :hi PMenuSbar ctermbg=17
 
 nnoremap <silent><Space>t :NERDTreeToggle<CR>
 :let g:NERDTreeWinSize=30
@@ -107,6 +110,10 @@ nnoremap gv :vertical wincmd f<CR>
 nnoremap <Leader><Leader> <Esc>:nohlsearch<CR>
 map <Leader>routes <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
 map <Space>ag <Esc>:Ag 
+map ; :
+map <S-a> <C-a>
+map <S-x> <C-x>
+map <Space>diff <Esc>:vertical diffsplit 
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
 hi clear SpellBad
