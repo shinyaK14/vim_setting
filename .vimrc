@@ -81,6 +81,7 @@ map <silent> <Space>P :call YanktmpPaste_P()<CR>
 map <Space>s <Esc>:w<CR>
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
+noremap <Leader>j J
 map <S-j> <C-w>j
 map <S-k> <C-w>k
 map <S-h> <C-w>h
