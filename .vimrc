@@ -16,11 +16,12 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'tpope/vim-surround'
 
 " NeoBundle 'croaker/mustang-vim'
 " NeoBundle 'jeetsukumaran/vim-nefertiti'
@@ -59,15 +60,16 @@ set autoindent
 set expandtab
 set shiftwidth=2
 set mouse=a
+set spelllang+=cjk
 set spell
 set scrolloff=10
 set ignorecase
 set hlsearch
 set wrap
 set clipboard=unnamed,autoselect
-set fencs=iso-2022-jp,sjis,euc-jp
+set fencs=utf-8,iso-2022-jp,sjis,euc-jp
 set enc=utf-8
-set fenc=utf-8
+" set fenc=utf-8
 
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
@@ -109,7 +111,7 @@ map <Space>0 $
 map <Space>1 ^
 nnoremap gv :vertical wincmd f<CR>
 nnoremap <Leader><Leader> <Esc>:nohlsearch<CR>
-map <Leader>routes <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
+" map <Leader>routes <Esc>:vs routes<CR><Esc>:r !rake routes<CR>
 map <Space>ag <Esc>:Ag 
 map ; :
 map <S-a> <C-a>
@@ -120,32 +122,25 @@ command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'),
 hi clear SpellBad
 hi SpellBad cterm=underline
 
-" neocomplcache
+" --------------------------------
+"  " neocomplete.vim
+"  " --------------------------------
 let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_manual_completion_start_length = 3
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_min_keyword_length = 2
-let g:neocomplcache_enable_quick_match = 1
-let g:neocomplcache_max_list = 20
-let g:neocomplcache_dictionary_filetype_lists = {
-  \ 'default' : ''
-  \ }
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns._ = '\h\w*'
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
+let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let s:neco_dicts_dir = $HOME . 'dotfiles/dicts'
+if isdirectory(s:neco_dicts_dir)
+  let g:neocomplete#sources#dictionary#dictionaries = {
+        \   'ruby': s:neco_dicts_dir . '/ruby.dict'
+        \ }
 endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
+let g:neocomplete#max_list = 20
 
+map :gpull :Git pull
+map <Leader>av <Esc>:AV<CR>
 
