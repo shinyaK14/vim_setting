@@ -143,4 +143,5 @@ let g:neocomplete#max_list = 20
 
 map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
+map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
 
