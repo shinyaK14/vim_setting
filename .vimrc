@@ -22,6 +22,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 " NeoBundle 'croaker/mustang-vim'
 " NeoBundle 'jeetsukumaran/vim-nefertiti'
@@ -145,3 +146,20 @@ map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
 map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
 
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default<Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
+let g:multi_cursor_next_key='<S-n>'
+let g:multi_cursor_prev_key='<S-p>'
+let g:multi_cursor_skip_key='<S-x>'
