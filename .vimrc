@@ -23,6 +23,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'vim-scripts/taglist.vim'
 
 " NeoBundle 'croaker/mustang-vim'
 " NeoBundle 'jeetsukumaran/vim-nefertiti'
@@ -108,7 +109,7 @@ noremap g<CR> g;
 nnoremap q :<C-u>q<CR>
 map <Space>= <Esc>:vertical resize 100<CR>
 map <Space>3 <Esc>:vertical resize 30<CR>
-map <Space>0 $
+map <Space>= $
 map <Space>1 ^
 nnoremap gv :vertical wincmd f<CR>
 nnoremap <Leader><Leader> <Esc>:nohlsearch<CR>
@@ -163,3 +164,12 @@ endfunction
 let g:multi_cursor_next_key='<S-n>'
 let g:multi_cursor_prev_key='<S-p>'
 let g:multi_cursor_skip_key='<S-x>'
+
+" taglist
+set tags=tags
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_Show_one_File = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
+map <Space>l :TlistToggle <CR>
+
