@@ -24,6 +24,8 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'ujihisa/neco-look'
 
 " NeoBundle 'croaker/mustang-vim'
 " NeoBundle 'jeetsukumaran/vim-nefertiti'
@@ -60,6 +62,7 @@ set bs=start
 set tabstop=2
 set autoindent
 set expandtab
+" set cursorline
 set shiftwidth=2
 set mouse=a
 set spelllang+=cjk
@@ -118,6 +121,7 @@ map <Space>ag <Esc>:Ag
 map ; :
 map <S-a> <C-a>
 map <S-x> <C-x>
+vmap <C-c> :w !pbcopy<CR><CR>
 map <Space>diff <Esc>:vertical diffsplit 
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
@@ -160,10 +164,6 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
   endif
 endfunction
-
-let g:multi_cursor_next_key='<S-n>'
-let g:multi_cursor_prev_key='<S-p>'
-let g:multi_cursor_skip_key='<S-x>'
 
 " taglist
 set tags=tags
