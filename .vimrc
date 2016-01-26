@@ -54,6 +54,11 @@ autocmd VimEnter,Colorscheme * :hi PMenuSbar ctermbg=17
 nnoremap <silent><Space>t :NERDTreeToggle<CR>
 :let g:NERDTreeWinSize=30
 let g:NERDTreeDirArrows=0
+
+if !argc()
+  autocmd vimenter * NERDTree|normal gg3j
+endif
+
 filetype plugin indent on
 syntax on
 set relativenumber
@@ -62,7 +67,9 @@ set bs=start
 set tabstop=2
 set autoindent
 set expandtab
-" set cursorline
+set cursorline
+highlight CursorLine ctermbg=16
+" highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 set shiftwidth=2
 set mouse=a
 set spelllang+=cjk
@@ -123,47 +130,63 @@ map <S-a> <C-a>
 map <S-x> <C-x>
 vmap <C-c> :w !pbcopy<CR><CR>
 map <Space>diff <Esc>:vertical diffsplit 
+map <Leader>fp <Esc>:echo expand("%:p")<CR>
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
+noremap <S-q> <nop>
 
 hi clear SpellBad
 hi SpellBad cterm=underline
 
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
+set undodir=~/.vim/tmp
+
+
 " --------------------------------
 "  " neocomplete.vim
 "  " --------------------------------
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let s:neco_dicts_dir = $HOME . 'dotfiles/dicts'
-if isdirectory(s:neco_dicts_dir)
-  let g:neocomplete#sources#dictionary#dictionaries = {
-        \   'ruby': s:neco_dicts_dir . '/ruby.dict'
-        \ }
-endif
-let g:neocomplete#max_list = 20
+" let g:acp_enableAtStartup = 0
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"   let g:neocomplete#force_omni_input_patterns = {}
+" endif
+" let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" let s:neco_dicts_dir = $HOME . 'dotfiles/dicts'
+" if isdirectory(s:neco_dicts_dir)
+"   let g:neocomplete#sources#dictionary#dictionaries = {
+"         \   'ruby': s:neco_dicts_dir . '/ruby.dict'
+"         \ }
+" endif
+" let g:neocomplete#max_list = 20
 
 map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
 map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
 
 " Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-" Called once only when the multiple selection is canceled (default<Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
+" function! Multiple_cursors_before()
+"   if exists(':NeoCompleteLock')==2
+"     exe 'NeoCompleteLock'
+"   endif
+" endfunction
+"
+" " Called once only when the multiple selection is canceled (default<Esc>)
+" function! Multiple_cursors_after()
+"   if exists(':NeoCompleteUnlock')==2
+"     exe 'NeoCompleteUnlock'
+"   endif
+" endfunction
 
 " taglist
 set tags=tags
@@ -173,3 +196,4 @@ let Tlist_Use_Right_Window = 1
 let Tlist_Exit_OnlyWindow = 1
 map <Space>l :TlistToggle <CR>
 
+inoremap <silent> <Space>pp <C-p>
