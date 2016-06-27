@@ -106,6 +106,7 @@ map <Space>f :CtrlP<CR>
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:24'
 map <Space>o :only<CR>
 map <Space>v :vs<CR>
+map <Space>ss :split<CR>
 map <Leader>gf <Esc>:vs Gemfile<CR>
 map <Leader>bi <Esc>:!bundle install<CR>
 map <Leader>vr <Esc>:vs ~/dotfiles/.vimrc<CR>
