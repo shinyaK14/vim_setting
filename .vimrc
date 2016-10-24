@@ -5,6 +5,8 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
+runtime macros/matchit.vim
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -24,6 +26,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'vim-scripts/ruby-matchit'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'ujihisa/neco-look'
 
@@ -32,6 +35,7 @@ NeoBundle 'ujihisa/neco-look'
 " NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sickill/vim-monokai'
 " NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundleCheck
 call neobundle#end()
@@ -107,6 +111,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:24'
 map <Space>o :only<CR>
 map <Space>v :vs<CR>
 map <Space>ss :split<CR>
+map <Space>e :%s///g
 map <Leader>gf <Esc>:vs Gemfile<CR>
 map <Leader>bi <Esc>:!bundle install<CR>
 map <Leader>vr <Esc>:vs ~/dotfiles/.vimrc<CR>
@@ -174,6 +179,7 @@ set undodir=~/.vim/tmp
 map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
 map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
+map <Leader>ct <Esc>:!ctags -R<CR><CR>
 
 " Called once right before you start selecting multiple cursors
 " function! Multiple_cursors_before()
