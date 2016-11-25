@@ -76,8 +76,8 @@ highlight CursorLine ctermbg=16
 " highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 set shiftwidth=2
 set mouse=a
-set spelllang+=cjk
-set spell
+" set spelllang+=cjk
+" set spell
 set scrolloff=10
 set ignorecase
 set hlsearch
@@ -96,7 +96,7 @@ noremap <Space>h :Unite file_mru<CR>
 map <silent> <Space>y :call YanktmpYank()<CR> 
 map <silent> <Space>p :call YanktmpPaste_p()<CR> 
 map <silent> <Space>P :call YanktmpPaste_P()<CR>
-map <Space>s <Esc>:w<CR>
+map <Space>s <Esc>:w!<CR>
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 noremap <Leader>j J
