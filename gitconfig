@@ -1,0 +1,5 @@
+[alias]
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[user]
+	name = Shinya Kitamura
+	email = shinya.kitamura.14@gmail.com
