@@ -2,6 +2,7 @@
 *.dat
 *.po
 *.sql
+*.svg
 .git
 .svn
 zsh-completions

@@ -117,8 +117,10 @@ map <Leader>bi <Esc>:!bundle install<CR>
 map <Leader>vr <Esc>:vs ~/dotfiles/.vimrc<CR>
 map <Space>qa <Esc>:qall<CR>
 map <Space>qq <Esc>:q!<CR>
+map <Space>mc <Esc>:MultipleCursorsFind 
 map <Leader>ra <Esc>:!rubocop -a<CR>
 map <Space>gs <Esc>:Gstatus<CR>
+map <Space>gc <Esc>:Gread<CR>
 map <Space>gv <Esc>:Gitv<CR>
 map <Leader>rt <Esc>:vs config/routes.rb<CR>
 noremap g<CR> g;

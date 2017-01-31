@@ -1,0 +1,53 @@
+map <Space>= $
+map <Space>1 ^
+syntax on
+set relativenumber
+set autoindent
+set shiftwidth=2
+set mouse=a
+" set spelllang+=cjk
+" set spell
+set scrolloff=10
+set ignorecase
+set hlsearch
+set wrap
+set clipboard=unnamed,autoselect
+set fencs=utf-8,iso-2022-jp,sjis,euc-jp
+set enc=utf-8
+
+map <Space>s <Esc>:w!<CR>
+inoremap <silent> jj <ESC>
+inoremap <silent> <C-j> j
+noremap <Leader>j J
+map <S-j> <C-w>j
+map <S-k> <C-w>k
+map <S-h> <C-w>h
+map <S-l> <C-w>l
+map <S-w> <C-w>w
+map <Space>o :only<CR>
+map <Space>v :vs<CR>
+map <Space>ss :split<CR>
+map <Space>e :%s///g
+map <Space>qa <Esc>:qall<CR>
+map <Space>qq <Esc>:q!<CR>
+nnoremap q :<C-u>q<CR>
+nnoremap gv :vertical wincmd f<CR>
+nnoremap <Leader><Leader> <Esc>:nohlsearch<CR>
+map ; :
+map <S-a> <C-a>
+map <S-x> <C-x>
+vmap <C-c> :w !pbcopy<CR><CR>
+map <Space>diff <Esc>:vertical diffsplit 
+map <Leader>fp <Esc>:echo expand("%:p")<CR>
+noremap <S-q> <nop>
+
+hi clear SpellBad
+hi SpellBad cterm=underline
+
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
+set undodir=~/.vim/tmp
+map <Leader>av <Esc>:AV<CR>
+map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
+map <Leader>ct <Esc>:!ctags -R<CR><CR>
+
