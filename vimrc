@@ -21,15 +21,16 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'vim-scripts/ruby-matchit'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'ujihisa/neco-look'
-
+NeoBundle 'jgdavey/tslime.vim'
+NeoBundle 'thoughtbot/vim-rspec'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+map <Leader>t :call RunCurrentSpecFile()<CR>
 " NeoBundle 'croaker/mustang-vim'
 " NeoBundle 'jeetsukumaran/vim-nefertiti'
 " NeoBundle 'nanotech/jellybeans.vim'
@@ -39,6 +40,8 @@ NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundleCheck
 call neobundle#end()
+
+syntax enable
 
 autocmd ColorScheme * hi Normal ctermfg=231 ctermbg=234
 autocmd ColorScheme * hi NonText ctermfg=59 ctermbg=234
@@ -64,7 +67,6 @@ if !argc()
 endif
 
 filetype plugin indent on
-syntax on
 set relativenumber
 let g:indent_guides_enable_on_vim_startup = 1
 set bs=start
@@ -76,8 +78,8 @@ highlight CursorLine ctermbg=16
 " highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 set shiftwidth=2
 set mouse=a
-" set spelllang+=cjk
-" set spell
+set spelllang+=cjk
+set spell
 set scrolloff=10
 set ignorecase
 set hlsearch
@@ -138,7 +140,6 @@ map <S-a> <C-a>
 map <S-x> <C-x>
 vmap <C-c> :w !pbcopy<CR><CR>
 map <Space>diff <Esc>:vertical diffsplit 
-map <Leader>fp <Esc>:echo expand("%:p")<CR>
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 noremap <S-q> <nop>
 
@@ -158,51 +159,9 @@ set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 set undodir=~/.vim/tmp
 
-
-" --------------------------------
-"  " neocomplete.vim
-"  " --------------------------------
-" let g:acp_enableAtStartup = 0
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
-" if !exists('g:neocomplete#force_omni_input_patterns')
-"   let g:neocomplete#force_omni_input_patterns = {}
-" endif
-" let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" let s:neco_dicts_dir = $HOME . 'dotfiles/dicts'
-" if isdirectory(s:neco_dicts_dir)
-"   let g:neocomplete#sources#dictionary#dictionaries = {
-"         \   'ruby': s:neco_dicts_dir . '/ruby.dict'
-"         \ }
-" endif
-" let g:neocomplete#max_list = 20
-
 map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
 map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
 map <Leader>ct <Esc>:!ctags -R<CR><CR>
-
-" Called once right before you start selecting multiple cursors
-" function! Multiple_cursors_before()
-"   if exists(':NeoCompleteLock')==2
-"     exe 'NeoCompleteLock'
-"   endif
-" endfunction
-"
-" " Called once only when the multiple selection is canceled (default<Esc>)
-" function! Multiple_cursors_after()
-"   if exists(':NeoCompleteUnlock')==2
-"     exe 'NeoCompleteUnlock'
-"   endif
-" endfunction
-
-" taglist
-set tags=tags
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Show_one_File = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Exit_OnlyWindow = 1
-map <Space>l :TlistToggle <CR>
-
 inoremap <silent> <Space>pp <C-p>
+

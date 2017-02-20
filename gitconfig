@@ -3,3 +3,5 @@
 [user]
 	name = Shinya Kitamura
 	email = shinya.kitamura.14@gmail.com
+[core]
+   excludesfile = ~/dotfiles/gitignore_global
