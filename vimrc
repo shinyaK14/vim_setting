@@ -5,11 +5,12 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
+" % match
 runtime macros/matchit.vim
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'yegappan/mru'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tomtom/tcomment_vim'
@@ -29,14 +30,31 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'jgdavey/tslime.vim'
 NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'maxmellon/vim-jsx-pretty'
+" NeoBundle 'neoclide/coc.nvim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
+NeoBundle 'Quramy/tsuquyomi'
+
+
+
+
+
+let g:jsx_ext_required = 0
+
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 map <Leader>t :call RunCurrentSpecFile()<CR>
-" NeoBundle 'croaker/mustang-vim'
-" NeoBundle 'jeetsukumaran/vim-nefertiti'
-" NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sickill/vim-monokai'
-" NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundleCheck
 call neobundle#end()
@@ -45,11 +63,7 @@ syntax enable
 
 autocmd ColorScheme * hi Normal ctermfg=231 ctermbg=234
 autocmd ColorScheme * hi NonText ctermfg=59 ctermbg=234
-" colorscheme mustang
-" colorscheme nefertiti
-" colorscheme jellybeans
 colorscheme monokai
-" colorscheme hybrid
 
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=234
@@ -68,6 +82,7 @@ endif
 
 filetype plugin indent on
 set relativenumber
+set number
 let g:indent_guides_enable_on_vim_startup = 1
 set bs=start
 set tabstop=2
@@ -80,6 +95,8 @@ set shiftwidth=2
 set mouse=a
 set spelllang+=cjk
 set spell
+syntax spell toplevel
+
 set scrolloff=10
 set ignorecase
 set hlsearch
@@ -94,7 +111,7 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
-noremap <Space>h :Unite file_mru<CR>
+noremap <Space>h :MRU<CR>
 map <silent> <Space>y :call YanktmpYank()<CR> 
 map <silent> <Space>p :call YanktmpPaste_p()<CR> 
 map <silent> <Space>P :call YanktmpPaste_P()<CR>
@@ -162,6 +179,16 @@ set undodir=~/.vim/tmp
 map :gpull :Git pull
 map <Leader>av <Esc>:AV<CR>
 map <Leader>cp <Esc>:!pbcopy < "%:p"<CR><CR>
+map <Leader>pp <Esc>:!prettier --write "%:p"<CR>:L<CR>
 map <Leader>ct <Esc>:!ctags -R<CR><CR>
 inoremap <silent> <Space>pp <C-p>
+
+" augroup nerdtree
+"   autocmd!
+"   autocmd FileType nerdtree syntax clear NERDTreeFlags
+"   autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+"   autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
+"   autocmd FileType nerdtree setlocal conceallevel=3
+"   autocmd FileType nerdtree setlocal concealcursor=nvic
+" augroup END
 
