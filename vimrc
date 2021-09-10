@@ -33,6 +33,10 @@ NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'maxmellon/vim-jsx-pretty'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'szw/vim-tags'
+
+
 " NeoBundle 'neoclide/coc.nvim'
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -138,9 +142,10 @@ map <Space>qa <Esc>:qall<CR>
 map <Space>qq <Esc>:q!<CR>
 map <Space>mc <Esc>:MultipleCursorsFind 
 map <Leader>ra <Esc>:!rubocop -a<CR>
-map <Space>gs <Esc>:Gstatus<CR>
+map <Space>gs <Esc>:Git<CR>
 map <Space>gc <Esc>:Gread<CR>
 map <Space>gv <Esc>:Gitv<CR>
+map <Space>gb <Esc>:Git blame<CR>
 map <Leader>rt <Esc>:vs config/routes.rb<CR>
 noremap g<CR> g;
 nnoremap q :<C-u>q<CR>
@@ -192,3 +197,11 @@ inoremap <silent> <Space>pp <C-p>
 "   autocmd FileType nerdtree setlocal concealcursor=nvic
 " augroup END
 
+
+" ctags
+let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -f .tags -R . 2>/dev/null"
+let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R -f .Gemfile.lock.tags `bundle show --paths` 2>/dev/null"
+set tags+=.tags
+set tags+=.Gemfile.lock.tags
+
+nnoremap <C-]> g<C-]> 
